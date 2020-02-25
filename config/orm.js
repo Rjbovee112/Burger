@@ -1,4 +1,4 @@
-var connection = require("./connection.js");
+var connection = require("./connection");
 
 var orm = {
     selectALL: function (table) {
@@ -6,12 +6,27 @@ var orm = {
         connection.query(queryString, [table], function (err, result) {
             if (err) throw err;
             console.log(result);
+            console.log("selected all" + table);
         });
     },
 
-    insertOne: function () ,
+    insertOne: function (table, burgerName, devoured) {
+        var query = "INSERT INTO ??  (burger_name, devoured) VALUES ('??', ??);"
+        connection.query(query, [table, burgerName, devoured])
+        if (err) throw err;
+        console.log(result);
+        console.log("Add complete");
+    },
 
-    updateOne: 
+    updateOne: function (table, burgerName, id) {
+        var query = "update ?? set burger_name = '??', devoured = ?? where burger_id = ?"
+        connection.query(query, [table, burgerName, id], function (err, result) {
+            if (err) throw err;
+            console.log(results);
+            console.log("Update complete");
+        })
+    }
+
 }
 
 module.exports = orm;
@@ -24,35 +39,3 @@ module.exports = orm;
 
 
 
-
-
-
-//copied code over from 13//
-selectWhere: function (tableInput, colToSearch, valOfCol) {
-    var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-
-    console.log(queryString);
-
-    connection.query(queryString, [tableInput, colToSearch, valOfCol], function (err, result) {
-        if (err) throw err;
-        console.log(result);
-    });
-},
-leftJoin: function (whatToSelect, tableOne, tableTwo, onTableOneCol, onTableTwoCol) {
-    var queryString = "SELECT ?? FROM ?? AS tOne";
-    queryString += " LEFT JOIN ?? AS tTwo";
-    queryString += " ON tOne.?? = tTwo.??";
-
-    console.log(queryString);
-
-    connection.query(queryString, [whatToSelect, tableOne, tableTwo, onTableOneCol, onTableTwoCol], function (
-        err,
-        result
-    ) {
-        if (err) throw err;
-        console.log(result);
-    });
-}
-};
-
-module.exports = orm;
