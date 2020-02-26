@@ -1,24 +1,35 @@
 
 var express = require("express");
 var exphbs = require("express-handlebars");
-var ORM = require("./config/orm");
+var orm = require("./config/orm");
+const cTable = require("console.table");
+
 var PORT = process.env.PORT || 8080;
 
 var app = express();
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
+
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 ///
 /////
 /////// this is for using handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-//
-////
-/////// start of orm code
-ORM.selectALL(burgers);
+// 
+// //
+//  // //
+// start of ORM code
+var burger = "asdflj";
+orm.selectAll();
+// orm.insertOne("nommy");
+// orm.updateOne("freekingWorked", 2);
+
+
 
 
 
