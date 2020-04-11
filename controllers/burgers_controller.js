@@ -5,7 +5,19 @@ var router = express.Router();
 var burger = require("../models/burger.js")
 
 router.get("/", function (req, res) {
-    res.redirect("/burgers");
+    res.render('index', {
+        layout: true,
+        helpers: {
+            burgers: function () {
+                return [
+                    'Burger #1',
+                    'Burger #2',
+                    'Burger #3',
+                ];
+
+            },
+        },
+    });
 });
 
 router.get("/burgers", function (req, res) {
