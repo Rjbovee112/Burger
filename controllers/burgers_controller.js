@@ -6,16 +6,16 @@ var burger = require("../models/burger.js")
 
 router.get("/", function (req, res) {
     res.render('index', {
-        layout: true,
-        helpers: {
-            burgers: function () {
-                return [
-                    'Burger #1',
-                    'Burger #2',
-                    'Burger #3',
-                ];
-
-            },
+        showTitle: true,
+        burgers: function () {
+            return [
+                'Big Boy Sam',
+                'Bacon Delight',
+                'Big Tuna',
+                'Western Burger',
+                'Blue Cheese Burger',
+                'Avacado Burger',
+            ];
         },
     });
 });
