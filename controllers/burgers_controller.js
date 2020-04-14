@@ -7,16 +7,22 @@ var burger = require("../models/burger.js")
 router.get("/", function (req, res) {
     res.render('index', {
         showTitle: true,
-        burgers: function () {
-            return [
-                'Big Boy Sam',
-                'Bacon Delight',
-                'Big Tuna',
-                'Western Burger',
-                'Blue Cheese Burger',
-                'Avacado Burger',
-            ];
-        },
+        burgers: async function () {
+            const burgers = [];
+
+
+            const data = await burger.all();
+            data.forEach(function (burger) {
+                burgers.push({
+                    burger_name: burger.burger_name,
+                })
+            })
+            console.log(burgers);
+
+
+            console.log(burgers);
+            return burgers;
+        }
     });
 });
 

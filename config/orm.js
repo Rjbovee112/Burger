@@ -24,13 +24,21 @@ function objToSql(object) {
 }
 
 var orm = {
-    all: function (tableInput, cb) {
+    all: function (tableInput) {
         var queryString = "SELECT * FROM " + tableInput + ";";
-        connection.query(queryString, function (err, result) {
-            if (err) throw err;
-            cb(result);
-        });
+        return new Promise(function (resolve, reject) {
+            connection.query(queryString, function (err, result) {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(result)
+                }
+            })
+        })
     },
+
+
+
     create: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 
