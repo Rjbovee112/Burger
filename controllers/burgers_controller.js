@@ -4,23 +4,21 @@ var router = express.Router();
 
 var burger = require("../models/burger.js")
 
-router.get("/", function (req, res) {
-    res.render('index', {
+//new code 
+
+router.get('/', function (req, res) {
+    console.log("you hit the route")
+    res.render('burgers', {
         showTitle: true,
-        burgers: async function () {
+        burgers: function () {
             const burgers = [];
-
-
-            const data = await burger.all();
+            const data = burger.all();
             data.forEach(function (burger) {
                 burgers.push({
                     burger_name: burger.burger_name,
                 })
             })
-            console.log(burgers);
-
-
-            console.log(burgers);
+            console.log("this is burger data", burgers)
             return burgers;
         }
     });

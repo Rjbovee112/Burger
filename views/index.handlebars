@@ -3,3 +3,64 @@
 <li>{{ burger_name }}</li>
 {{/each}}
 </ul>
+
+
+
+<h1>Welcome to Bovee's Burgers!</h1>
+
+<div class="currentList">
+    <h2 id="createdHeading">Burgers Created</h2>
+    <div>
+        <ul>
+
+            <li>
+                <p>Swiss Burger</p>
+                <form action="http://localhost:8000/api/burgers/17" method="PUT" class="dev">
+                    <input type="hidden" name="devoured" value="true">
+                    <button type="submit">DEVOUR</button>
+                </form>
+            </li>
+
+        </ul>
+    </div>
+
+
+    <div class="devoured">
+        <h2>Burgers Devoured</h2>
+        <ul>
+
+            <li>
+                <p>Big Boy Sam</p>
+            </li>
+
+            <li>
+                <p>Bacon Delight</p>
+            </li>
+
+            <li>
+                <p>Big Tuna</p>
+            </li>
+
+            <li>
+                <p>Western Burger</p>
+            </li>
+
+            <li>
+                <p>Blue Cheese Burger</p>
+            </li>
+
+            <li>
+                <p>Avacado Burger</p>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="create">
+    <h2>Create Your Own Burger Name</h2>
+    <form method="POST" action="http://localhost:8000/api/burgers">
+        <textarea id="textArea" type="text" name="burger_name" rows="2" cols="40"></textarea>
+        <button id="createbtn" type="submit">CREATE</button>
+    </form>
+</div>
