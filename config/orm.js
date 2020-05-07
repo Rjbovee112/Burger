@@ -24,15 +24,15 @@ function objToSql(object) {
 }
 
 var orm = {
-    all: function (tableInput) {
+    all: function (tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         return new Promise(function (resolve, reject) {
             connection.query(queryString, function (err, result) {
                 if (err) {
-                    reject(err)
-                } else {
-                    resolve(result)
+                    throw err;
                 }
+                console.log("this is the error", err)
+                cb(res)
             })
         })
     },
